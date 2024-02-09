@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Welcomeo.css') }}">
+    <title>Page d'accueil</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">App_Xpress</a></li>
+                <li><a href="{{ url_for('contenu') }}">Nos articles</a></li>
+                 <li><a href="{{ url_for('contact') }}">contact</a></li>
+                <audio controls loop autoplay>
+                    <source src="{{ url_for('static', filename='images/ocho.m4a') }}" />
+                </audio>
+            </ul>
+        </nav>
+
+        <h2>ArticleHub</h2>
+
+        <p style="font-size: 30px; color: turquoise;">
+            Votre destination en ligne pour des articles variés, informatifs et captivants,
+            couvrant un large éventail de sujets et répondant à vos intérêts et besoins.
+        </p>
+
+        <section class="site-container">
+            <h1>PRESS APP</h1>
+            <h4> VENEZ EXPLORER NOS ARTICLES LES PLUS TENDANCES...</h4>
+            <div class="row">
+                <a href="" style="font-size: 14px;">Prendre un rendez-vous</a>
+                <a href="" style="font-size: 14px;">Voir les sites <span style="font-size: 14px;">&#x27f6</span></a>
+                <span>
+                    <p style="font-size: 24px;">Achetez votre véhicule en toute confiance</p>
+                    <p style="font-size: 24px;">Accélérez vers l'avenir automobile avec Nous !</p>
+                </span>
+            </div>
+        </section>
+
+        <section class="social-icons">
+            <a href=""><img src="{{ url_for('static', filename='images/github-fill.png') }}" alt=""></a>
+            <a href=""><img src="{{ url_for('static', filename='images/instagram-fill.png') }}" alt=""></a>
+            <a href=""><img src="{{ url_for('static', filename='images/telegram-fill.png') }}" alt=""></a>
+            <a href="" target="_blank"><img src="{{ url_for('static', filename='images/drive-fill.png') }}" alt=""></a>
+        </section>
+    </div>
+</body>
+</html>

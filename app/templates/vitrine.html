@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Voyage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://kit.fontawesome.com/96dcb489df.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- section acceuil -->
+     <section id="container">
+      <header>
+        <div class="logo">
+            <p>AutoXpress</p>
+        </div>
+
+        <!-- menu responsive -->
+        <div class="menu-toggle"></div>
+        <nav>
+        <ul class="menu">
+            <li><a href="{{ url_for('accueil') }}">acceuil</a></li>
+            <li><a href="{{ url_for('products_list') }}">Boutique</a></li>
+            <li><a href="{{ url_for('panier') }}">Panier</a></li>
+            <li><a href="{{ url_for('contact') }}">contact</a></li>
+        </ul>
+        </nav>
+      </header>
+      <div class="container-text">
+          <h1>Conduire, Une passion</h1>
+          <p>Se déplacer en voiture c'est transcender l'existence quotidienne.</p>
+          <a href="{{ url_for('products_list') }}">acheter une voiture</a>
+      </div>
+    </section> 
+
+
+     <!-- home -->
+
+
+    <section class="home">
+        <div class="site_desc">
+            <div class="left">
+                <h1>Commander les véhicules de luxe près de chez vous.</h1>
+                <p>Trouvez la clé de votre bonheur automobile parmi notre collection exclusive. Des véhicules fiables et élégants vous attendent, prêts à être conduits vers de nouveaux horizons .</p>
+                <div class="left_button">
+                    <a href="{{ url_for('products_list') }}">Commander Maintenant <img src="/static/images/cart.png"></a>
+                    <a href="{{ url_for('products_list') }}">Apprendre Plus <img src="/static/images/next.png" alt=""></a>
+                </div>
+            </div>
+            <div class="right">
+                <img src="/static/images/musk.jpg" alt="">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- site info statistics -->
+    <section class="info-statistics">
+        <div class="box">
+            <h1>7505+</h1>
+            <p>voitures</p>
+        </div>
+        <div class="box">
+            <h1>4871+</h1>
+            <p>Garages</p>
+        </div>
+        <div class="box">
+            <h1>5184+</h1>
+            <p>Employés</p>
+        </div>
+        <div class="box">
+            <h1>7544+</h1>
+            <p>Collaborateurs</p>
+        </div>
+
+    </section>
+
+
+    <!-- à propos -->
+
+    <section class="about-us">
+        <div class="left">
+            <img src="/static/images/scare.jpeg">
+        </div>
+        <div class="right">
+            <h2>Transformez votre conduite quotidienne en une expérience exceptionnelle</h2>
+            <p>Bienvenue sur notre plateforme dédiée à l'automobile, où chaque véhicule raconte une histoire unique. Trouvez le vôtre aujourd'hui!</p>
+            <button><a href="{{ url_for('products_list') }}"> Apprendre Plus  <img src="/static/images/next_white.png" alt=""></a> </button>
+
+        </div>
+    </section>
+    
+    <!-- services -->
+
+    <section class="services">
+        <div class="left">
+            <h2>La perfection automobile prend forme dans chaque véhicule que nous créons à la main.</h2>
+            <p class="text">Chaque virage, chaque kilomètre devient une aventure avec nos véhicules à vendre. Trouvez le compagnon de route idéal ici!</p>
+            <button><a href="{{ url_for('products_list') }}"> Savoir Plus <img src="/static/images/next_white.png"></a></button>
+        </div>
+        <div class="right">
+            <img src="/static/images/dark.jpg" alt="">
+        </div>
+    </section>
+
+         <!-- about -->
+    <section class="about">
+        <div class="image">
+            <img src="/static/images/azerty.jpg">
+        </div>
+        <div class="content">
+            <h1>About company</h1>
+            <h2>We create beautiful ranges of <br> Cars for client since 1858.</h2>
+            <p>Laissez-vous séduire par l'élégance et la performance. Trouvez le véhicule qui reflète votre style de vie parmi nos offres exceptionnelles.</p>
+        </div>
+              
+    </section>
+     <!-- about -->
+    
+    <br></br>
+    <br></br>
+  
+    <section class="header-home">
+      
+       <!-- home -->
+           <section class="home">
+               <div class="left">
+                   <h1>Best Interior design for your car.</h1>
+                   <p>Votre destination de rêve commence au volant de nos voitures, conçues pour exceller.
+                   Vivez l'émotion de la conduite avec nos voitures, où chaque modèle raconte sa propre histoire. Embarquez vers l'avenir de la conduite avec nos voitures d'exception.</p>
+                   
+               </div>
+               <div class="right">
+                    <img src="/static/images/qwerty.jpg">
+               </div>
+              
+           </section>
+        <!-- home -->
+    </section>
+
+    
+    <br></br>
+
+    <!-- banner -->
+
+    <div class="banner">
+        <h1>Conduisez vers le futur ,<br>  Osez l'innovation électrique</h1>
+        <p>De la sophistication au dynamisme, parcourez notre catalogue exclusif de voitures à vendre et choisissez celle qui fera battre votre cœur à chaque trajet </p>
+        <p>Parcourez notre vitrine virtuelle et laissez-vous séduire par notre collection de voitures de qualité. Chaque modèle est une invitation à l'aventure. Choisissez le vôtre dès maintenant!</p>
+    </div>
+
+   
+
+    <!-- section a propos -->
+     <section id="a-propos">
+        <div>
+            <p class="tittle-section">à propos</p>
+            <h1 class="sub-tittle-section">Qui sommes nous </h1>
+            <div class="description-photo">
+                    <div class="desc">
+                        <p>L'art de la performance - Vivez l'émotion à chaque virage. Explorez l'infini - Libérez votre esprit aventureux. L'innovation qui inspire confiance - Conduisez la fiabilité..</p>
+
+                        <H2>NOS SERVICES</H2>
+
+                        <div class="list-services">
+                            <div class="service">
+                               
+                               <img src="/static/images/speed.gif" alt="">
+                              
+                                <p>RAPIDE</p>
+                            </div>
+                            <div class="service">
+                                <img src="/static/images/livraison.gif" alt="">
+                                <p>LIVRAISON</p>
+                            </div>
+                            <div class="service">
+                               <img src="/static/images/security.gif" alt="">
+                                <p>SÉCURITÉ</p>
+                            </div> 
+                        </div>
+                         <br>
+                         <div class="list-services">
+                            <div class="service">
+                                <img src="/static/images/quality.gif" alt="">
+                                <p>QUALITÉ</p>
+                            </div>
+                            <div class="service">
+                                <img src="/static/images/economy.gif" alt="">
+                                <p>ECONOMIQUE</p>
+                            </div>
+                            <div class="service">
+                                <img src="/static/images/disponibility.gif" alt="">
+                                <p>DISPONIBITÉ H24</p>
+                            </div>
+                        </div>
+                         <br>
+                </div>
+                <img src="/static/images/car33.jpg" alt="">
+            </div>
+
+        </div>
+    </section> 
+
+       
+
+    <br></br>
+  
+        <!-- section gallerie destination -->
+    <section id="gallerie">
+            <p class="tittle-section">NOS VOITURES</p>
+            <h1 class="sub-tittle-section">Nos véhicules les plus tendances</h1>
+            <div class="liste-photos">
+                <div class="gallerie-img">
+                    <img src="/static/images/car3.jpeg" alt="">
+                    <div class="show-country"><p></p></div>
+                </div>
+                <div class="gallerie-img">
+                    <img src="/static/images/car4.jpeg" alt="">
+                    <div class="show-country"><p></p></div>
+                </div>
+                <div class="gallerie-img">
+                    <img src="/static/images/car5.jpeg" alt="">
+                    <div class="show-country"><p></p></div>
+                </div>
+                <div class="gallerie-img">
+                    <img src="/static/images/car6.jpeg" alt="">
+                    <div class="show-country"><p></p></div>
+                </div>
+
+            </div>
+    </section> 
+
+        <br></br>
+
+    <!-- section destination -->
+    <p class="tittle-section">LES ARTICLES</p>
+    <br>
+    <section id="popular-destination">
+        <h1 class="title">Nos contenues les plus populaires</h1>
+        <div class="content">
+            <!-- box -->
+            <div class="box">
+                <img src="/static/images/lome.jpg" alt="">
+                <div class="content">
+                    <div>
+                        <h4>Car_1</h4>
+                        <p>L'exclusivité à grande vitesse - Où la passion rencontre la performance.</p>
+                        <p>Sécurité et style réunis - Conduisez avec confiance.</p>
+                        <p>Luxe redéfini - Conduisez l'extraordinaire.</p>
+                        <p>Inspiré pour performer - Une conduite au-delà de l'ordinaire.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- box -->
+            <!-- box -->
+            <div class="box">
+                <img src="/static/images/moscou.jpg" alt="">
+                <div class="content">
+                    <div>
+                        <h4>Car_2</h4>
+                        <p>Incarnez l'audace - Pilotez la perfection sportive.</p>
+                        <p>L'extravagance déchaînée - Explorez la puissance artistique de la route.</p>
+                        <p>Construit pour exceller - Puissance, robustesse, raffinement.</p>
+                        <p>Construit pour exceller - Puissance, robustesse, raffinement.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- box -->
+            <!-- box -->
+            <div class="box">
+                <img src="/static/images/miami.jpg" alt="">
+                <div class="content">
+                    <div>
+                        <h4>Car_3</h4>
+                        <p>L'excellence en mouvement - Explorez le luxe redéfini.</p>
+                        <p>Construit pour durer, conçu pour impressionner - Vivez l'aventure à chaque tournant.</p>
+                        <p>L'art de l'ingénierie de luxe - Où la sophistication rencontre la performance.</p>
+                        <p>Style audacieux, technologie avancée - Conduisez avec élégance.</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- box -->
+             <!-- box -->
+             <div class="box">
+                <img src="/static/images/angeles.jpg" alt="">
+                <div class="content">
+                    <div>
+                        <h4>Car_4</h4>
+                        <p>L'essence de l'Amérique sur roues - Performance, puissance, perfection.</p>
+                        <p>Innovation qui inspire - Explorez le futur de la conduite</p>
+                        <p>La puissance de surprendre - Élégance et performance à portée de main.</p>
+                        <p>Précision artisanale, performance innovante - Explorez la route avec confiance.</p>
+                     
+                    </div>
+                </div>
+            </div>
+            <!-- box -->
+             <!-- box -->
+             <div class="box">
+                <img src="/static/images/romeo.jpg" alt="">
+                <div class="content">
+                    <div>
+                        <h4>Car_5</h4>
+                        <p>"Élégance et puissance redéfinies - La conduite devient une œuvre d'art.</p>
+                        <p>All-wheel drive, All-weather fun - Affrontez la route avec confiance.</p>
+                        <p>Dominant tous les terrains - Aventurez-vous avec élégance.</p>
+                        <p>La beauté mécanique italienne - Éveillez votre passion de conduite.</p>
+                       
+                    </div>
+                </div>
+            </div>
+            <!-- box -->
+             <!-- box -->
+             <div class="box">
+                <img src="/static/images/tokio.jpg" alt="">
+                <div class="content">
+                    <div>
+                        <h4>Car_6</h4>
+                        <p>La grâce sauvage - Laissez-vous emporter par la puissance sophistiquée.</p>
+                        <p>Conduisez la qualité - Équilibre parfait entre performance et confort.</p>
+                        <p>L'innovation accessible à tous - Conduisez avec style et simplicité</p>
+                        <p>Élégance moderne, technologie avancée - Conduisez en toute tranquillité.</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- box -->
+        </div>
+    </section>   
+    
+    <br></br>
+    <!-- Footer -->
+      <div class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="footer-col-1">
+                  <h3>Download Our App</h3>
+                  <p>
+                     Download App for Android <br />
+                     and ios mobile phone
+                  </p>
+                  <div class="app-logo">
+                     <img src="/static/images/play-store.png" alt="" onclick="openImg(this)" id="image"/>
+                     <img src="/static/images/app-store.png" alt="" onclick="openImg(this)" id="image"/>
+                  </div>
+               </div>
+               <div class="footer-col-2">
+                  <img src="/static/images/car.jfif" alt="" onclick="openImg(this)" id="image"/>
+                  <p>
+                     Lorem, ipsum dolor sit amet consectetur <br />adipisicing elit.
+                     Porro, eum?
+                  </p>
+               </div>
+               <div class="footer-col-3">
+                  <h3>Useful Links</h3>
+                  <ul>
+                     <li>Coupons</li>
+                     <li>Blog Post</li>
+                     <li>Return Policy</li>
+                     <li>Join Affiliate</li>
+                  </ul>
+               </div>
+               <div class="footer-col-4">
+                  <h3>Follow us</h3>
+                  <ul>
+                     <li>Facebook</li>
+                     <li>Twitter</li>
+                     <li>Instagram</li>
+                     <li>YouTube</li>
+                  </ul>
+               </div>
+            </div>
+            <hr />
+            <p class="copyright">Copyright 2022 - Maxime</p>
+         </div>
+      </div>
+       
+
+<script>
+    var menu_toggle = document.querySelector('header .menu-toggle');
+    var menu = document.querySelector('header .menu');
+    menu_toggle.onclick = function(){
+        menu_toggle.classList.toggle('active') ; 
+        menu.classList.toggle('responsive') ; 
+    }
+</script>
+
+
+</body>
+</html>

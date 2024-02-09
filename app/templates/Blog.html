@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog - Frenchcoder</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/Blog.css') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"/>
+</head>
+<body>
+  <nav>
+    <h1>ArticleHub</h1>
+    <div class="onglets">
+
+    <a href="{{ url_for('liste') }}">Liste des articles</a>
+      <a href="{{ url_for('index') }}">Nos articles</a>
+      <a href="{{ url_for('accueil') }}">Accueil</a>
+      <a href="{{ url_for('liste') }}">Commentaire</a>
+      <a href="{{ url_for('contact') }}">contact</a>
+    </div>
+  </nav>
+  
+  <section class="articles">
+
+    {% if photos %}
+                    {% for photo in photos %}
+    
+     <div class="article">
+      <div class="left">
+        <img src="{{ url_for('static', filename='uploads/' + photo.image) }}" alt="">
+      </div>
+
+      <div class="right">
+        <p class="date"> {{ photo.date }}</p>
+        <h1>{{ photo.titre }}</h1>
+        <p class="description">{{ photo.text }}</p>
+        <p class="auteur">@{{ photo.user.username }}</p>
+      </div>
+    </div> 
+    <hr>
+    {% endfor %}
+                {% else %}
+                    <p>Aucun article trouvé</p>
+                {% endif %}
+    
+    
+  </section>
+  
+  <footer>
+    <h2>&copy; 2024, by Maxime ANANIVI &copy;</h2>
+    <div class="social-media">
+      <p><i class="fab fa-facebook"></i></p>
+      <p><i class="fab fa-twitter"></i></p>
+      <p><i class="fab fa-instagram"></i></p>
+    </div>
+  </footer>
+</body>
+</html>

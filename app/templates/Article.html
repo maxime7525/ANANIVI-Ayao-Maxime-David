@@ -1,0 +1,289 @@
+<!-- myapp/templates/add_photo.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout des articles</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            display: flex;
+            
+            min-height: 100vh;
+            background-color: #0d0024;
+            position: relative;
+            flex-direction: column;
+            background-image:url(/static/images/image1.jpeg);
+        }
+
+.body {align-items: center;
+            justify-content: center;}
+
+
+        .link {
+            position: absolute;
+            top: 23px;
+            left: 50px;
+            background-color: cyan;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            color: black;
+        }
+        .linko {
+    position: absolute;
+    top:141px ;
+    left: 50px;
+   background-color: blue;
+    text-decoration: 0;
+    padding: 10px 25px;
+    border-radius: 6px;
+    color: #fff;   
+}
+
+   .linka {
+    position: absolute;
+    top: 303px ;
+    left: 50px;
+    background-color: green;
+    text-decoration: 0;
+    padding: 10px 25px;
+    border-radius: 6px;
+    color: #fff;   
+}
+                        
+.linky {
+    position: absolute;
+    top: 445px ;
+    left: 50px;
+    background-color: darkorange;
+    text-decoration: 0;
+    padding: 10px 25px;
+    border-radius: 6px;
+    color: white;
+}  
+
+    .linku {
+    position: absolute;
+    top: 550px ;
+    left: 50px;
+    background-color: #0496c2;
+    text-decoration: 0;
+    padding: 10px 25px;
+    border-radius: 6px;
+    color: #fff;
+}
+
+        .error {
+            color: rgb(236, 90, 90);
+            text-align: center;
+            font-size: 14px;
+            transition: 0.5s;
+            animation: anime 0.5s ease-out;
+            margin-bottom: 20px;
+        }
+        /*Error animation*/
+        @keyframes anime {
+            from {
+                transform: translateY(-50px);
+            }
+        }
+        form {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            border-radius: 6px;
+            width: 350px;
+        }
+        label {
+            margin-bottom: 10px;
+        }
+        ::-webkit-file-upload-button {
+            background-color: #0496c2;
+            padding: 5px 25px;
+            color: #fff;
+            border-radius: 6px;
+            border: 0;
+            cursor: pointer;
+        }
+        input , textarea {
+            margin-bottom: 7px;
+            padding: 10px;
+            resize: none;
+            outline: 0;
+            border-radius: 6px;
+        }
+        input[type='file']{
+            padding: 10px 0;
+        }
+        input[type="submit"]{
+            margin-bottom: 0;
+            background-color: darkslategray;
+            color: #fff;
+            border: 0;
+        }
+        /*Liste CSS*/
+        section {
+            margin-top: 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit , 20rem);
+            justify-content: center;
+            padding: 20px;
+            margin-bottom: 50px;
+            width: 100%;
+            gap: 20px;
+        }
+        .box {
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 6px;
+            position: relative;
+        }
+        .img_principal {
+            width: 100%;
+            object-fit: cover;
+            height: 200px;
+            border-radius: 6px;
+        }
+        .delete_btn {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+        }
+        .delete_btn img {
+            width: 40px;
+            height: 40px;
+        }
+        .box div {
+            font-size: 13px;
+            margin-top: 10px;
+        }
+        .vide_message {
+            font-size: 15px;
+            color: #fff;
+        }
+
+        }
+        h2 {
+            color: white;
+        }
+
+        
+.sidebar-title {
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+.sidebar-title:first-child{
+    margin-top: 10px;
+}
+.sidebar{
+    background: #E8E8E8;
+    float: right;
+    width: 300px;
+    z-index: 1;
+    position: relative;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: gray;
+}
+
+.sidebar ul{
+    list-style: none;
+}
+
+.sidebar li{
+    padding: 6px 0;
+}
+
+.sidebar a:hover{
+    text-decoration: underline;
+}
+
+hr{
+    border: none;
+    background: #c4c4c4;
+    height: 1px;
+    margin: 20px;
+}
+
+.sidebar {
+     position: absolute;
+    top: 30px ;
+    right: 20px;       
+}
+
+
+    </style>
+</head>
+
+<body>
+    <a href="{{ url_for('liste') }}" class="link">Liste des articles</a>
+     <a href="{{ url_for('index') }}" class="linko">Bibliothèque</a>
+     <a href="{{ url_for('home') }}" class="linky">Ajouter un commentaire</a>
+     <a href="{{ url_for('contenu') }}" class="linku" >Contenu de nos articles</a>
+    <p class="error">
+        {{ message }}
+    </p>
+
+
+    <aside class="sidebar">
+                <h4 class="sidebar-title">Nos Articles</h4>
+
+                <ul>
+                    {% for photo in photos %}
+                        <li><a href="">{{ photo.titre }}</a></li>
+                        <hr/>
+                    {% endfor %}
+                </ul>
+                
+            </aside>
+
+<center>
+      <form action="" method="POST" enctype="multipart/form-data"> 
+      
+        
+        <label for="image">Ajouter une image de l'article</label>
+        <input type="file" name="image" id="image">
+
+
+        <label for="titre">Titre de l'article</label>
+        <input type="text" id="titre" name="titre" placeholder="Entrez le titre">
+
+
+        <label for="categorie">Sélectionner la catégorie de l'article</label>
+    <select name="categorie" id="categorie">
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name_categorie }}</option>
+        {% endfor %}
+    </select>
+
+
+
+        <label for="text">Description de l'article</label>
+        <textarea name="text" id="text" cols="30" rows="10" placeholder="Saisissez la description"></textarea>
+
+        <input type="submit" value="Ajouter" name="send">
+    </form>
+</div>
+</center>
+
+
+   
+</body>
+
+
+</html>

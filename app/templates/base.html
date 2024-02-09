@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listes des articles</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylo.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <ul class="menu">
+            <li><a href="{{ url_for('accueil') }}">accueil</a></li>
+            <li><a href="{{ url_for('article') }}">Ajouter un article</a></li>
+            <li><a href="{{ url_for('liste') }}">Modifier || Supprimer</a></li>
+            <li><a href="{{ url_for('home') }}">Ajouter un commentaire</a></li>
+            <li><a href="{{ url_for('contenu') }}">Contenu de nos articles</a></li>
+            <li><a href="{{ url_for('deconnexion') }}">Déconnexion</a></li>
+        </ul>
+    </header>
+
+    <section class="services">
+        <h1 class="title">NOS ARTICLES</h1>
+        <p class="sub-title"></p>
+        <div class="list-services">
+
+            {% if photos %}
+                {% for photo in photos %}
+                    <div class="box">
+                       <img class="img_principal" src="{{ url_for('static', filename='uploads/' + photo.image) }}">
+
+                        <h4>Publié par </h4><h1>@{{ photo.user.username }}</h1>
+                        <h4>le {{ photo.date }}</h4>
+                        <hr>
+
+                        <h4><u>Titre :</u></h4>
+                        <h3>{{ photo.titre }}</h3>
+                        
+
+                        <h4><u>Categorie de l'article :</u></h4>
+                        <h1>{{ photo.categorie }}</h1>
+
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="vide_message">La liste des photos est vide.</p>
+            {% endif %}
+
+        </div>
+    </section>
+
+</body>
+
+</html>

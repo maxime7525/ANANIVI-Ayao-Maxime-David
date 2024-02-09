@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/paniero.css') }}">
+	  
+</head>
+
+<body class="panier">
+	
+    <section>
+	
+      <table>
+         <a href="{{ url_for('products_list') }}" class="link">## Shop ##</a>
+    <thead>
+        <tr>
+            <th>Véhicules ajoutés</th>
+            <th>Nom du produit</th>
+            <th>Prix unitaire</th>
+            <th>Quantité</th>
+            <th>Sous-total</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td><img src="{{ url_for('static', filename='images/' + product.data.img) }}"></td>  <!-- Correction ici -->
+            <td>{{ product.data.name }}</td>
+            <td>{{ product.data.price }} €</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.data.price * product.quantity }} €</td>
+            <td>
+                <a href="{{ url_for('delete_product', product_id=product.data.id) }}">  <!-- Correction ici -->
+                    <img id="delete-icon" src="/static/images/delete.png" alt="Supprimer le produit">
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr class="total">
+            <th>Total : {{ total }} €</th>
+        </tr>
+    </tbody>
+</table>
+		
+    </section>
+	
+</body>
+</html>
+

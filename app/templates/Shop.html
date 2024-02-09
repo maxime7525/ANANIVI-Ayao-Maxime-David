@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITAL DRIVE</title>
+	 <link rel="stylesheet" href="{{ url_for('static', filename='css/Shopo.css') }}">
+</head>
+
+<body>
+
+  <!-- section acceuil -->
+
+       <header class="header">
+        <nav>
+            <center>
+            <ul>
+                <li><a href="{{ url_for('accueil') }}">accueil</a></li>
+                <li><a href="{{ url_for('panier') }}">Panier</a></li>
+                 <li><a href="{{ url_for('contact') }}">contact</a></li>
+                <li><a href="{{ url_for('deconnexion') }}">Déconnexion</a></li>
+            </ul>
+            </center>
+        </nav>
+    </header>
+<br></br>
+<br></br>  
+<br></br>
+      <!-- decoration -->
+<section class="decoration">
+
+    <div class="deco-list">
+        {% for product in products %}
+        <div class="deco">
+            {% if product.img %}
+    <img src="{{ url_for('static', filename='images/' + product.img) }}">
+{% endif %}
+
+            <p>{{ product.name }}</p>
+            <span>{{ product.price }} €<br></span>
+            <br>
+            <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="orange_link">Ajouter au panier</a>
+          
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<section id="cars">
+   <div class="images">
+       <ul>
+           {% for product in products %}
+           <li class="cars">
+               <div>
+                   {% if product.img %}
+    <img src="{{ url_for('static', filename='images/' + product.img) }}">
+{% endif %}
+
+               </div>
+               <span class="name">{{ product.name }}</span>
+               <span class="price">{{ product.price }} €</span>
+               
+               <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="id_product">Ajouter au panier </a>
+               
+           </li>
+           {% endfor %}
+       </ul>
+   </div>
+</section>
+
+
+    <br></br>
+    <!-- Footer -->
+      <div class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="footer-col-1">
+                  <h3>Download Our App</h3>
+                  <p>
+                     Download App for Android <br />
+                     and ios mobile phone
+                  </p>
+                  <div class="app-logo">
+                     <img src="/images/play-store.png" alt="" onclick="openImg(this)" id="image"/>
+                     <img src="/images/app-store.png" alt="" onclick="openImg(this)" id="image"/>
+                  </div>
+               </div>
+               <div class="footer-col-2">
+                  <img src="/static/images/car.jfif" alt="" onclick="openImg(this)" id="image"/>
+                  <p>
+                     Lorem, ipsum dolor sit amet consectetur <br />adipisicing elit.
+                     Porro, eum?
+                  </p>
+               </div>
+               <div class="footer-col-3">
+                  <h3>Useful Links</h3>
+                  <ul>
+                     <li>Coupons</li>
+                     <li>Blog Post</li>
+                     <li>Return Policy</li>
+                     <li>Join Affiliate</li>
+                  </ul>
+               </div>
+               <div class="footer-col-4">
+                  <h3>Follow us</h3>
+                  <ul>
+                     <li>Facebook</li>
+                     <li>Twitter</li>
+                     <li>Instagram</li>
+                     <li>YouTube</li>
+                  </ul>
+               </div>
+            </div>
+            <hr />
+            <p class="copyright">Copyright 2022 - Maxime</p>
+         </div>
+      </div>
+       
+</body>
+</html>
+

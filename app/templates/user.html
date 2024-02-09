@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des utilisateurs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+</head>
+<body>
+    <div class="container">
+          <a href="{{ url_for('admin') }}" class="Btn_add"> <img src="/static/images/back.png"> Retour</a>
+        <table>
+            <tr id="items">
+                <th>id</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+           
+           {% if users %}
+            {% for user in users %}
+                        <tr>
+
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <!--Nous alons mettre l'id de chaque employé dans ce lien -->
+
+                             <td>
+                                <a>
+                            <img src="{{ url_for('static', filename='images/edit.png') }}">
+                                </a>
+                            </td>
+
+                           <td>
+                                <a class="delete_btn" href="{{ url_for('delete_user', user_id=user.id) }}">
+                            <img src="{{ url_for('static', filename='images/trash.png') }}">
+                                </a>
+                            </td>
+
+
+                        </tr>
+             {% endfor %}
+
+            {% else %}
+                <p class="vide_message">La liste des utisateurs est vide.</p>
+            {% endif %}
+
+        </table>
+   
+    </div>
+</body>
+</html>

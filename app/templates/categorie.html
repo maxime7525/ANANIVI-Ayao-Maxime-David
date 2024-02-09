@@ -1,0 +1,234 @@
+<!-- myapp/templates/add_photo.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout de catégories</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #0d0024;
+            position: relative;
+            flex-direction: column;
+            background-image:url(/images/togo.png);
+        }
+        .link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #0496c2;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            color: #fff;
+        }
+        .linko {
+    position: absolute;
+    top:20px ;
+    right: 20px;
+    background-color: magenta;
+    text-decoration: 0;
+    padding: 10px 25px;
+    border-radius: 6px;
+    color: #fff;   
+}
+        .error {
+            color: rgb(236, 90, 90);
+            text-align: center;
+            font-size: 14px;
+            transition: 0.5s;
+            animation: anime 0.5s ease-out;
+            margin-bottom: 20px;
+        }
+        /*Error animation*/
+        @keyframes anime {
+            from {
+                transform: translateY(-50px);
+            }
+        }
+        form {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            border-radius: 6px;
+            width: 350px;
+        }
+        label {
+            margin-bottom: 10px;
+        }
+        ::-webkit-file-upload-button {
+            background-image: linear-gradient(to right , #e91e63 ,#f44336);
+            padding: 5px 25px;
+            color: #fff;
+            border-radius: 6px;
+            border: 0;
+            cursor: pointer;
+        }
+        input , textarea {
+            margin-bottom: 7px;
+            padding: 10px;
+            resize: none;
+            outline: 0;
+            border-radius: 6px;
+        }
+        input[type='file']{
+            padding: 10px 0;
+        }
+        input[type="submit"]{
+            margin-bottom: 0;
+            background-image: linear-gradient(to right , #e91e63 ,#f44336);
+            color: #fff;
+            border: 0;
+        }
+        /*Liste CSS*/
+        section {
+            margin-top: 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit , 20rem);
+            justify-content: center;
+            padding: 20px;
+            margin-bottom: 50px;
+            width: 100%;
+            gap: 20px;
+        }
+        .box {
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 6px;
+            position: relative;
+        }
+        .img_principal {
+            width: 100%;
+            object-fit: cover;
+            height: 200px;
+            border-radius: 6px;
+        }
+        .delete_btn {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+        }
+        .delete_btn img {
+            width: 40px;
+            height: 40px;
+        }
+        .box div {
+            font-size: 13px;
+            margin-top: 10px;
+        }
+        .vide_message {
+            font-size: 15px;
+            color: #fff;
+        }
+        .back_btno {
+            color: #2bc48a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .back_btno img {
+            height: 16px;
+            margin-right:5px ;
+        }
+        h2 {
+            color: white;
+        }
+
+
+        
+.sidebar-title {
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+.sidebar-title:first-child{
+    margin-top: 10px;
+}
+.sidebar{
+    background: #E8E8E8;
+    float: right;
+    width: 300px;
+    z-index: 1;
+    position: relative;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: gray;
+}
+
+.sidebar ul{
+    list-style: none;
+}
+
+.sidebar li{
+    padding: 6px 0;
+}
+
+.sidebar a:hover{
+    text-decoration: underline;
+}
+
+hr{
+    border: none;
+    background: #c4c4c4;
+    height: 1px;
+    margin: 20px;
+}
+
+.sidebar {
+     position: absolute;
+    top: 90px ;
+    right: 20px;       
+}
+
+
+    </style>
+</head>
+
+
+<body>
+    <a href="{{ url_for('liste') }}" class="link">Liste des photos</a>
+    <a href="{{ url_for('index') }}" class="linko">Bibliothèque</a>
+    <p class="error">
+        {{ message }}
+    </p>
+
+    <aside class="sidebar">
+        <h4 class="sidebar-title">Catégories</h4>
+
+        <ul>
+            {% for ajout in ajouts %}
+                <li><a href="">{{ ajout.name_categorie }}</a></li>
+                <hr />
+            {% endfor %}
+        </ul>
+    </aside>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+      
+
+        <label for="name_categorie">Ajouter le titre de la catégorie</label>
+        <input type="text" id="name_categorie" name="name_categorie" placeholder="Entrez le titre de la catégorie">
+
+        <input type="submit" value="Ajouter" name="send">
+    </form>
+</body>
+
+
+</html>

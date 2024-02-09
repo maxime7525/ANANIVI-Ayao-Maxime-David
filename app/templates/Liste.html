@@ -1,0 +1,863 @@
+<!-- myapp/templates/list_photos.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des articles</title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #0d0024;
+    position: relative;
+    flex-direction: column;
+    background-image:url(paris.jpg);
+}
+.link {
+    position: absolute;
+    top:20px ;
+    left: 20px;
+    background-image: linear-gradient(to right , #e91e63 ,#f44336);
+    text-decoration: 0;
+    padding: 10px 25px;
+    border-radius: 6px;
+    color: #fff;
+    
+}
+.linko {
+    position: absolute;
+    top:20px ;
+    right: 20px;
+   background-image: linear-gradient(to right , #e91e63 ,#f44336);
+    text-decoration: 0;
+    padding: 10px 25px;
+    border-radius: 6px;
+    color: #fff;   
+}
+.error {
+    color: rgb(236,90,90);
+    text-align: center;
+    font-size: 14px;
+    transition: 0.5s;
+    animation: anime 0.5s ease-out;
+    margin-bottom: 20px;
+}
+/*Error animation*/
+@keyframes anime {
+    from {
+        transform: translateY(-50px);
+    }
+}
+form {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 6px;
+    width: 350px;
+}
+label {
+    margin-bottom: 10px;
+}
+::-webkit-file-upload-button {
+    background-image: linear-gradient(to right , #e91e63 ,#f44336);
+    padding: 5px 25px;
+    color: #fff;
+    border-radius: 6px;
+    border: 0;
+    cursor: pointer;
+}
+input , textarea {
+    margin-bottom: 7px;
+    padding: 10px;
+    resize: none;
+    outline: 0;
+    border-radius: 6px;
+}
+input[type='file']{
+    padding: 10px 0;
+}
+input[type="submit"]{
+    margin-bottom: 0;
+    background-image: linear-gradient(to right , #e91e63 ,#f44336);
+   color: #fff;
+   border: 0;
+
+}
+
+/*Liste CSS*/
+
+section{
+   margin-top: 100px;
+   display: grid;
+   grid-template-columns: repeat(auto-fit , 20rem);
+   justify-content: center;
+   padding: 20px;
+   margin-bottom: 50px;
+   width: 100%;
+   gap: 20px;
+}
+
+.box {
+    width: 355px; /* Ajustez la largeur selon vos besoins */
+    margin: 0 auto; /* Centre le box horizontalement */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    position: relative;
+}
+
+
+.img_principal {
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+    border-radius: 6px;
+}
+
+.delete_btn {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+}
+
+.delete_btn img {
+   width: 40px;
+   height: 40px;
+}
+
+.edit_btn img {
+   width: 40px;
+   height: 40px;
+   z-index: 3;
+}
+
+.edit_btn {
+    position: absolute;
+    top: 420px;
+    right: 20px;
+  
+}
+
+.box div {
+    font-size: 13px;
+    margin-top: 10px;
+}
+.vide_message {
+    font-size: 15px;
+    color:#fff;
+}
+.back_btno {
+    color: #2bc48a;
+    text-decoration: 0;
+    display: flex;
+    align-items: center;
+}
+.back_btno img {
+    height: 16px;
+    margin-right:5px ;
+}
+h2{
+    color: red;
+    font-size: 30px;
+    font-weight: 500;
+}
+h3{
+    color: green;
+    font-size: 30px;
+    font-weight: 500;
+}
+h1{
+    color: red;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: white;
+  padding: 20px;
+  z-index: 3;
+  opacity: .95;
+
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px 0;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  padding-right: 40px;
+  text-align: right;
+  list-style-type: none;
+   color : black;
+}
+
+ul li {
+  margin-right: 10px;
+}
+
+ul li a {
+  position: relative;
+  padding: 10px 20px;
+  text-decoration: none;
+  color : black;
+  font-size: 16px;
+}
+
+ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  transform: translateX(-50%) translateY(-5px);
+  height: 3px;
+  background: #ffa400;
+  transition: 0.3s;
+}
+
+ul li a:hover::after {
+  width: 38%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container {
+  max-width: 1300px;
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.row {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.col-2 {
+  flex-basis: 50%;
+  min-width: 300px;
+}
+.col-2 img {
+  max-width: 100%;
+  padding: 50px 0;
+}
+.col-2 h1 {
+  font-size: 50px;
+  line-height: 60px;
+  margin: 25px 0;
+}
+.btn {
+  display: inline-block;
+  background: #DA70D6;
+  color: #fff;
+  padding: 8px 20px;
+  margin: 30px 0;
+  border-radius: 5px;
+  transition: background 0.5s;
+}
+
+.btn:hover {
+  background-color: #563434; 
+  color: #fff;
+}
+
+.header {
+  background: radial-gradient(#fff, #ffd6d6);
+}
+
+.header .row {
+  margin-top: 20px;
+}
+
+.categories {
+  margin: 70px 0;
+}
+
+.col-3 {
+  flex-basis: 30%;
+  min-width: 250px;
+  margin-bottom: 30px;
+}
+
+.col-3 img {
+  width: 100%;
+}
+
+.small-container {
+  max-width: 1080px;
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.col-4 {
+  flex-basis: 25%;
+  padding: 10px;
+  min-width: 200px;
+  margin-bottom: 50px;
+  transition: transform 0.5s;
+}
+.col-4 img {
+  width: 100%;
+  height: 280px;
+}
+.title {
+  text-align: center;
+  margin: 0 auto 80px;
+  position: relative;
+  line-height: 60px;
+  color: #555;
+}
+.title::after {
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  height: 5px;
+  border-radius: 5px;
+   background: #DA70D6;
+  content: "";
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+h4 {
+  color: #555;
+  font-weight: normal;
+}
+
+.col-4 p {
+  font-size: 14px;
+}
+
+.rating .fa {
+  color: #DA70D6;
+}
+
+.col-4:hover {
+  transform: translateY(-5px);
+}
+.testimonial {
+  padding-top: 100px;
+}
+.testimonial .col-3 {
+  text-align: center;
+  padding: 40px 20px;
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+.testimonial .col-3 img {
+  width: 50px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+.testimonial .col-3:hover {
+  transform: translateY(-10px);
+}
+
+.fa.fa-quote-left {
+  font-size: 34px;
+  color: #DA70D6;
+}
+.col-3{
+    background-color: white;
+     border-radius: 6px;
+}
+
+.col-3 p {
+  font-size: 12px;
+  margin: 12px 0;
+  color: black;
+}
+
+.testimonial .col-3 h3 {
+  font-weight: 600;
+  color: #555;
+  font-size: 16px;
+}
+.brands {
+  margin: 100px auto;
+}
+.col-5 {
+  width: 160px;
+}
+.col-5 img {
+  width: 100%;
+  cursor: pointer;
+  filter: grayscale(100%);
+}
+
+.col-5 img:hover {
+  filter: grayscale(0);
+}
+
+/* footer */
+.footer {
+  background: grey;
+  color: #fff;
+  font-size: 14px;
+  padding: 60px 0 20px;
+  width: 100%;
+}
+.footer p {
+  color: #fff;
+}
+.footer h3 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+.footer-col-1,
+.footer-col-2,
+.footer-col-3,
+.footer-col-4 {
+  min-width: 250px;
+  margin-bottom: 20px;
+}
+
+.footer-col-1 {
+  flex-basis: 30px;
+}
+
+.footer-col-2 {
+  flex: 1;
+  text-align: center;
+}
+.footer-col-2 img {
+  width: 180px;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 50%;
+}
+.footer-col-3,
+.footer-col-4 {
+  flex-basis: 12%;
+  text-align: center;
+}
+ul {
+  list-style-type: none;
+}
+.app-logo {
+  margin-top: 20px;
+}
+.app-logo img {
+  width: 140px;
+}
+
+.footer hr {
+  border: none;
+  background: #b5b5b5;
+  height: 1px;
+  margin: 20px 0;
+}
+.copyright {
+  text-align: center;
+}
+.menu-icon {
+  width: 28px;
+  margin-left: 20px;
+  display: none;
+}
+
+/* All Products */
+.row-2 {
+  justify-content: space-between;
+  margin: 100px auto 50px;
+}
+
+select {
+  padding: 10px; 
+  border: 1px solid #DA70D6;
+  box-shadow: 5px 5px 5px #DA70D6;
+}
+select:focus {
+color: rgb(141, 38, 138)
+ 
+}
+.page-btn {
+  margin: 0 auto 80px;
+}
+.page-btn span {
+  text-align: center;
+  line-height: 40px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #DA70D6;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.page-btn span:hover {
+  background: #DA70D6;
+  color: #fff;
+}
+
+/* Cart Items Details */
+.cart-page {
+  margin: 30px auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+th {
+  text-align: left;
+  padding: 5px;
+  color: #fff;
+  background: #DA70D6;
+  font-weight: normal;
+}
+td {
+  padding: 10px 5px;
+}
+td input {
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+}
+td a {
+  color: #DA70D6;
+  font-size: 12px;
+}
+
+td img {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+.total-price {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.total-price table {
+  border-top: 3px solid #DA70D6;
+  width: 100%;
+  max-width: 400px;
+}
+td:last-child {
+  text-align: right;
+}
+th:last-child {
+  text-align: right;
+}
+/* Account Page */
+
+.account-page {
+  padding: 50px 0;
+  background: radial-gradient(#fff, #ffd6d6);
+}
+.form-container {
+  background: #fff;
+  width: 300px;
+  height: 350px;
+  position: relative;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: -90px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #DA70D6;
+}
+.form-container span {
+  font-weight: bold;
+  padding: 0 10px;
+  color: #555;
+  cursor: pointer;
+  width: 100px;
+  display: inline-block;
+  font-size: 24px;
+}
+
+.form-btn {
+  display: inline-block;
+}
+.form-container form {
+  max-width: 300px;
+  padding: 0 20px;
+  position: absolute;
+  top: 90px;
+  transition: transform 1s;
+}
+form input {
+  width: 100%;
+  height: 30px;
+  margin: 10px 0;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+}
+
+form .btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
+
+form a {
+  font-size: 12px;
+  padding-top: 50px;
+}
+
+
+
+
+
+#sideNav{
+  transition: 0.5s;
+  line-height: 80px;
+  width: 170px;
+  height: 100%;
+  position: fixed;
+  /*right: 0;*/
+  /*later*/
+  right: -250px; /*initially hidden*/
+  top: 0;
+  background: #DA70D6;
+  z-index: 2;
+  /* later after menu icon*/
+  padding-top: 100px;
+  padding-left: 10px;
+  color: white;
+  background: linear-gradient(rgba(243, 115, 211, 0.1), #DA70D6);
+}
+
+#sideNav ul{ 
+  color: white;
+}
+
+#menuBtn{
+width: 50px;
+height: 50px;
+background: #DA70D6;
+text-align: center;
+position: fixed;
+right: 10px;
+top: 5px;
+border-radius: 3px;
+z-index: 3;
+cursor: pointer;
+
+}
+
+#menuBtn img {
+  width: 20px;
+  margin-top: 15px;
+}
+    </style>
+
+
+</head>
+
+<!-- templates/index.html -->
+
+<body>
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('accueil') }}">accueil</a></li>
+                <li><a href="{{ url_for('article') }}">Ajouter un article</a></li>
+                <li><a href="{{ url_for('index') }}">Nos articles</a></li>
+                <li><a href="{{ url_for('home') }}">Ajouter un commentaire</a></li>
+                <li><a href="{{ url_for('contenu') }}">Contenu de nos articles</a></li>
+                <li><a href="{{ url_for('deconnexion') }}">Déconnexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        {% if photos %}
+            {% for photo in photos %}
+                <div class="box">
+                    <img class="img_principal" src="{{ url_for('static', filename='uploads/' + photo.image) }}">
+
+                    <h4>Publié par </h4><h1>@{{ photo.user.username }}</h1>
+                    <h4>le {{ photo.date }}</h4>
+                    <br>
+                    <hr>
+
+                    <h4><u>Titre :</u></h4>
+                    <h3>{{ photo.titre }}</h3>
+
+                    <hr>
+
+                    <h4><u>Catégorie de l'article :</u></h4>
+                    <h2>{{ photo.categorie.name_categorie }}</h2>
+
+                    {% if photo.user == current_user %}
+
+                        <a class="delete_btn" href="{{ url_for('delete_photo', photo_id=photo.id) }}">
+                            <img src="{{ url_for('static', filename='images/remove.png') }}">
+                        </a>
+
+                        <a class="edit_btn" href="{{ url_for('update', photo_id=photo.id) }}">
+                            <img src="{{ url_for('static', filename='images/edit.png') }}">
+                        </a>
+
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+        {% else %}
+            <p class="vide_message">La liste des photos est vide.</p>
+        {% endif %}
+    </section>
+
+  <!-------- Offer --------->
+      <!------ Testimonial  ------>
+      <div class="testimonial">
+         <div class="small-container">
+            <div class="row">
+               <div class="col-3">
+                  <i class="fa fa-quote-left"></i>
+                  <p>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, esse
+                     quae ex sequi praesentium fuga voluptatem placeat voluptates odio
+                     rerum.
+                  </p>
+                  <div class="rating">
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star-o"></i>
+                  </div>
+                  <img src="static/images/user-1.png" alt="" onclick="openImg(this)" id="image"/>
+                  <h3>Sean Parker</h3>
+               </div>
+               <div class="col-3">
+                  <i class="fa fa-quote-left"></i>
+                  <p>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, esse
+                     quae ex sequi praesentium fuga voluptatem placeat voluptates odio
+                     rerum.
+                  </p>
+                  <div class="rating">
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star-o"></i>
+                  </div>
+                  <img src="static/images/user-2.png" alt="" onclick="openImg(this)" id="image"/>
+                  <h3>Michel Joe</h3>
+               </div>
+
+               <div class="col-3">
+                  <i class="fa fa-quote-left"></i>
+                  <p>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, esse
+                     quae ex sequi praesentium fuga voluptatem placeat voluptates odio
+                     rerum.
+                  </p>
+                  <div class="rating">
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star-o"></i>
+                  </div>
+                  <img src="static/images/user-3.png" alt="" onclick="openImg(this)" id="image"/>
+                  <h3>Kaily Jenner</h3>
+               </div>
+
+            </div>
+         </div>
+      </div>
+
+     
+      <!-- Footer -->
+      <div class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="footer-col-1">
+                  <h3>Download Our App</h3>
+                  <p>
+                     Download App for Android <br />
+                     and ios mobile phone
+                  </p>
+                  <div class="app-logo">
+                     <img src="/static/images/play-store.png" alt="" onclick="openImg(this)" id="image"/>
+                     <img src="/static/images/app-store.png" alt="" onclick="openImg(this)" id="image"/>
+                  </div>
+               </div>
+               <div class="footer-col-2">
+                  <img src="/static/images/car.jfif" alt="" onclick="openImg(this)" id="image"/>
+                  <p>
+                     Lorem, ipsum dolor sit amet consectetur <br />adipisicing elit.
+                     Porro, eum?
+                  </p>
+               </div>
+               <div class="footer-col-3">
+                  <h3>Useful Links</h3>
+                  <ul>
+                     <li>Coupons</li>
+                     <li>Blog Post</li>
+                     <li>Return Policy</li>
+                     <li>Join Affiliate</li>
+                  </ul>
+               </div>
+               <div class="footer-col-4">
+                  <h3>Follow us</h3>
+                  <ul>
+                     <li>Facebook</li>
+                     <li>Twitter</li>
+                     <li>Instagram</li>
+                     <li>YouTube</li>
+                  </ul>
+               </div>
+            </div>
+            <hr />
+            <p class="copyright">Copyright 2022 - Maxime</p>
+         </div>
+      </div>
+       
+
+</body>
+</html>

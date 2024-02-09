@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Inscription</h1>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form action="" method="POST">
+            {{form.hidden_tag()}}
+           
+            <p>
+                {{ form.username.label }}
+                {{form.username}}
+            </p>
+            <p>
+                {{ form.email.label }}
+                {{form.email}}
+            </p>
+            <p>
+                {{ form.password.label }}
+                {{form.password}}
+            </p>
+          
+            <p>
+                {{ form.submit.label }}
+                {{form.submit}}
+            </p>
+        </form>
+    </div>
+
+
+    <style>
+        /* CSS */
+        /* Import Google font - Poppins */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1 {
+            margin: 20px 0;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+            background: #0496c2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 400px;
+            background: #fff;
+            border-radius: 7px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            padding: 30px; /* Ajout pour correspondre au style .container .form dans le CSS */
+        }
+
+        label {
+            padding: 10px 0;
+            color: #0496c2;
+            cursor: pointer;
+            display: block; /* Ajout pour corriger l'affichage du label */
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+
+        a {
+            font-size: 16px;
+            color: #0496c2;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            color: #fff;
+            background-color: #0496c2;
+            width: 100%;
+            padding: 10px;
+            font-size: 17px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer; /* Ajout pour indiquer qu'il s'agit d'un bouton cliquable */
+        }
+
+        button:hover {
+            background-color: #006653;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .error {
+            background-color: red;
+            color: #fff;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;      
+            text-align: center; 
+        }
+        ul {
+            list-style: none;
+            color: red;
+        }
+    </style>
+</body>
+</html>
